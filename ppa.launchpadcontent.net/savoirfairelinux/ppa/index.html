@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+  <head>
+<base href="https://launchpad.net/~savoirfairelinux/+index" />
+
+    <meta charset="UTF-8" />
+    <title>Savoir Faire Linux in Launchpad</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/@@/apple-touch-icon.png?v=2022" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/@@/favicon-32x32.png?v=2022" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/@@/favicon-16x16.png?v=2022" />
+    <link rel="manifest" href="/@@/site.webmanifest?v=2022" />
+    <link rel="mask-icon" href="/@@/safari-pinned-tab.svg?v=2022" color="#e9531f" />
+    <link rel="shortcut icon" href="/@@/favicon.ico?v=2022" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta name="msapplication-config" content="/@@/browserconfig.xml?v=2022" />
+    <meta name="theme-color" content="#ffffff" />
+    
+    
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.launchpad.net/~savoirfairelinux/latest-bugs.atom" title="Latest Bugs for Savoir Faire Linux" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.launchpad.net/~savoirfairelinux/branches.atom" title="Latest Branches for Savoir Faire Linux" />
+      <link rel="alternate" type="application/atom+xml" href="http://feeds.launchpad.net/~savoirfairelinux/revisions.atom" title="Latest Revisions by members of Savoir Faire Linux" />
+    
+
+    
+  
+  <link type="text/css" rel="stylesheet" media="screen, print" href="/+icing/rev1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32/combo.css" />
+
+
+    
+
+    
+      <meta name="description" content="http://www.savoirfairelinux.com" />
+      <meta property="og:description" content="http://www.savoirfairelinux.com" />
+    
+
+    
+    
+      <meta property="og:title" content="Savoir Faire Linux in Launchpad" />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="/@@/launchpad-og-image.png" />
+      <meta property="og:url" content="https://launchpad.net/~savoirfairelinux/+index" />
+      <meta property="og:site_name" content="Launchpad" />
+    
+
+    
+
+    
+  
+
+  
+  
+  <script type="text/javascript">
+    var LP = {
+        cache: {},
+        links: {}
+    };
+  </script>
+
+  
+
+  <script type="text/javascript">var cookie_scope = '; Path=/; Secure; Domain=.launchpad.net';</script>
+
+   <script type="text/javascript" src="/+combo/rev1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32/?yui/yui/yui-min.js&amp;lp/meta.js&amp;yui/loader/loader-min.js"></script>
+   <script type="text/javascript">
+        var raw = null;
+        if (LP.devmode) {
+           raw = 'raw';
+        }
+        YUI.GlobalConfig = {
+            combine: true,
+            comboBase: '/+combo/rev1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32/?',
+            root: 'yui/',
+            filter: raw,
+            debug: false,
+            fetchCSS: false,
+            maxURLLength: 2000,
+            groups: {
+                lp: {
+                    combine: true,
+                    base: '/+combo/rev1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32/?lp/',
+                    comboBase: '/+combo/rev1519c6efe8e9bd78e6c5ebf2eb5bcb040b95ad32/?',
+                    root: 'lp/',
+                    // comes from including lp/meta.js
+                    modules: LP_MODULES,
+                    fetchCSS: false
+                }
+            }
+        }</script>
+
+  <script type="text/javascript">
+      // we need this to create a single YUI instance all events and code
+      // talks across. All instances of YUI().use should be based off of
+      // LPJS instead.
+      var LPJS = new YUI();
+  </script>
+
+
+
+    <script id="base-layout-load-scripts" type="text/javascript">
+        //<![CDATA[
+        LPJS.use('base', 'node', 'console', 'event',
+            'oop', 'lp', 'lp.app.foldables','lp.app.sorttable',
+            'lp.app.inlinehelp', 'lp.app.links',
+            'lp.bugs.bugtask_index', 'lp.bugs.subscribers',
+            'lp.app.ellipsis', 'lp.code.branchmergeproposal.diff',
+            'lp.views.global',
+             function(Y) {
+
+            Y.on("domready", function () {
+                var global_view = new Y.lp.views.Global();
+                global_view.render();
+
+                Y.lp.app.sorttable.SortTable.init();
+                Y.lp.app.inlinehelp.init_help();
+                Y.lp.activate_collapsibles();
+                Y.lp.app.foldables.activate();
+                Y.lp.app.links.check_valid_lp_links();
+            });
+
+            Y.on('lp:context:web_link:changed', function(e) {
+                  window.location = e.new_value;
+            });
+        });
+        //]]>
+    </script>
+    <script id="base-helper-functions" type="text/javascript">
+         //<![CDATA[
+        // This code is pulled from lp.js that needs to be available on every
+        // request. Pulling here to get it outside the scope of the YUI block.
+        function setFocusByName(name) {
+            // Focus the first element matching the given name which can be focused.
+            var nodes = document.getElementsByName(name);
+            var i, node;
+            for (i = 0; i < nodes.length; i++) {
+                node = nodes[i];
+                if (node.focus) {
+                    try {
+                        // Trying to focus a hidden element throws an error in IE8.
+                        if (node.offsetHeight !== 0) {
+                            node.focus();
+                        }
+                    } catch (e) {
+                        LPJS.use('console', function(Y) {
+                            Y.log('In setFocusByName(<' +
+                                node.tagName + ' type=' + node.type + '>): ' + e);
+                        });
+                    }
+                    break;
+                }
+            }
+        }
+
+        function selectWidget(widget_name, event) {
+          if (event && (event.keyCode === 9 || event.keyCode === 13)) {
+              // Avoid firing if user is tabbing through or simply pressing
+              // enter to submit the form.
+              return;
+          }
+          document.getElementById(widget_name).checked = true;
+        }
+        //]]>
+    </script>
+
+    
+      
+    <link rel="meta" type="application/rdf+xml" title="FOAF" href="+rdf" />
+  
+    
+  </head>
+
+  <body id="document" itemscope="" itemtype="http://schema.org/WebPage" class="tab-overview
+      main_side
+      public
+      yui3-skin-sam">
+          
+          
+    <div class="yui-d0">
+      <div id="locationbar" class="login-logout">
+        
+
+<div id="logincontrol"><a href="https://launchpad.net/~savoirfairelinux/+login">Log in / Register</a></div>
+
+
+
+      </div><!--id="locationbar"-->
+
+      <div id="watermark" class="watermark-apps-portlet">
+        <div>
+          <a href="https://launchpad.net/~savoirfairelinux"><img alt="" width="64" height="64" src="https://launchpadlibrarian.net/111549629/sfllogo.png" /></a>
+        </div>
+        <div class="wide">
+          <h2 id="watermark-heading"><a href="https://launchpad.net/~savoirfairelinux">“Savoir Faire Linux” team</a></h2>
+        </div>
+        
+  <!-- Application Menu -->
+  <ul class="facetmenu">
+    
+      <li class="overview active"><span>Overview</span></li>
+      
+      
+    
+    
+      
+      <li class="branches"><a href="https://code.launchpad.net/~savoirfairelinux">Code</a></li>
+      
+    
+    
+      
+      <li class="bugs"><a href="https://bugs.launchpad.net/~savoirfairelinux">Bugs</a></li>
+      
+    
+    
+      
+      <li class="specifications"><a href="https://blueprints.launchpad.net/~savoirfairelinux">Blueprints</a></li>
+      
+    
+    
+      
+      <li class="translations"><a href="https://translations.launchpad.net/~savoirfairelinux">Translations</a></li>
+      
+    
+    
+      
+      <li class="answers"><a href="https://answers.launchpad.net/~savoirfairelinux">Answers</a></li>
+      
+    
+  </ul>
+
+      </div>
+
+      <div class="yui-t4">
+        <div id="maincontent" class="yui-main">
+          <div class="yui-b" dir="ltr">
+            <div class="context-publication">
+              
+              
+
+              <div id="registration" class="registering">
+                
+              </div>
+            </div>
+
+            
+            <div id="request-notifications">
+              
+            </div>
+
+            
+              <div>
+
+  <div class="description">
+      <div>
+  <div class="lazr-multiline-edit" id="edit-description">
+  <div class="clearfix">
+    
+
+    
+  </div>
+
+  <div class="yui3-editable_text-text"><p><a rel="nofollow" href="http://www.savoirfairelinux.com">http://<wbr />www.savoirfaire<wbr />linux.com</a></p></div>
+  </div>
+
+  
+</div>
+
+  </div>
+
+  <ul class="horizontal">
+    
+    <li>
+      <a class="sprite info" href="https://launchpad.net/~savoirfairelinux/+related-packages">
+        Related packages
+      </a>
+    </li>
+      <li>
+        <a class="sprite info" href="https://launchpad.net/~savoirfairelinux/+related-projects">
+          Related projects
+        </a>
+      </li>
+    
+    
+  </ul>
+
+  <div class="yui-g">
+    <div class="first yui-u">
+      
+  <div class="portlet" id="contact-details">
+    <h2>Team details</h2>
+
+    <dl id="contact-email">
+      <dt>Email:</dt>
+
+      <dd>
+        
+          <a href="+login">Log in</a> for email information.
+        
+
+        
+
+        
+      </dd>
+    </dl>
+
+    <div class="two-column-list">
+      <dl id="team-owner">
+        <dt>Owner:</dt>
+        <dd>
+          <a href="/~manumilou" class="sprite person">Emmanuel Milou</a>
+        </dd>
+      </dl>
+
+      <dl id="team-datecreated">
+        <dt>Created on:</dt>
+        <dd>
+          <span id="created-date" title="2009-04-13 15:47:44 UTC">2009-04-13</span>
+        </dd>
+      </dl>
+
+      <dl id="contact-languages">
+        <dt>Languages:</dt>
+        <dd>
+          English
+          
+        </dd>
+      </dl>
+      <dl id="subscription-policy">
+        <dt>Membership policy:</dt>
+        <dd title="Membership is exclusive; users and exclusive teams may ask to join.
+">
+          Moderated Team
+          <a class="sprite maybe action-icon" href="/+help-registry/team-subscription-policy.html" target="help"></a>
+        </dd>
+      </dl>
+
+    </div>
+  </div>
+
+    </div>
+    <div class="yui-u">
+      <div>
+
+<div id="membership" class="portlet">
+  <h2>
+    <span class="see-all">
+      <a href="https://launchpad.net/~savoirfairelinux/+members">
+        All members
+      </a>
+    </span>
+  </h2>
+
+  <div id="membership-summary" style="margin-bottom: 1.5em;">
+    <div>
+      <div id="membership-counts">
+        <strong class="sprite team" id="approved-member-count">
+          29
+        </strong>
+        <a href="/~savoirfairelinux/+members#active">active
+          
+  
+  members</a>
+      </div>
+    </div>
+
+    <p id="your-involvement">
+      You must <a href="+login">log in</a>
+      to join or leave this team.
+    </p>
+
+    
+  </div>
+  
+  <ul class="horizontal">
+      
+      <li>
+        <a class="menu-link-mugshots sprite team" href="https://launchpad.net/~savoirfairelinux/+mugshots">Show member photos</a>
+      </li>
+  </ul>
+  <table>
+    <tr>
+      <td id="recently-approved" style="padding-right: 1em" class="">
+        <h3>Latest members</h3>
+
+        <ul id="recently-approved-ul">
+          <li><a href="/~maxime-turcotte" class="sprite person">Maxime Turcotte</a></li>
+          <li><a href="/~nguyenduytho" class="sprite person">Tho Duy Nguyen</a></li>
+          <li><a href="/~savoirfairelinux-openerp" class="bg-image" style="background-image: url(https://launchpadlibrarian.net/112328878/savoirfairelinux14x14.png)">Savoir-faire Linux&#x27; OpenERP</a></li>
+          <li><a href="/~joao-gama" class="sprite person">Joao Alfredo Gama Batista</a></li>
+          <li><a href="/~pierrelucbacon" class="sprite person">pierrelux</a></li>
+        </ul>
+      </td>
+      <td id="recently-proposed" class="hidden">
+        <h3>Pending approval</h3>
+
+        <ul id="recently-proposed-ul">
+        </ul>
+        
+      </td>
+    </tr>
+  </table>
+
+  <div id="recently-invited" class="hidden">
+    <h3>Latest invited</h3>
+
+    <ul id="recently-invited-ul">
+    </ul>
+  </div>
+  
+</div>
+
+</div>
+    </div>
+  </div>
+
+  <div class="yui-g">
+    <!-- First portlet column. -->
+    <div class="first yui-u">
+      <div>
+  <div id="ppas" class="portlet">
+    <h2>Personal package archives</h2>
+
+    
+      
+  
+
+  <div>
+    <table>
+      
+        <tr>
+          <td><a href="/~savoirfairelinux/+archive/ubuntu/ppa" class="sprite ppa-icon">sflphone</a></td>
+        </tr>
+      
+      
+        <tr>
+          <td><a href="/~savoirfairelinux/+archive/ubuntu/sflphone-nightly" class="sprite ppa-icon">sflphone-nightly</a></td>
+        </tr>
+      
+      
+        <tr>
+          <td><a href="/~savoirfairelinux/+archive/ubuntu/sflvault" class="sprite ppa-icon">sflvault</a></td>
+        </tr>
+      
+    </table>
+  </div>
+
+    
+    <ul class="horizontal">
+      
+        
+      
+      
+
+      
+
+    </ul>
+  </div>
+  
+
+</div>
+      <div>
+
+<div id="mailing-lists" class="portlet">
+  <h2>Mailing list</h2>
+
+    
+    <div>
+      This team does not use Launchpad to host a mailing list.
+    </div>
+    
+</div>
+
+</div>
+    </div>
+
+    <!-- Second portlet column. -->
+    <div class="yui-u">
+      <div>
+
+<div class="portlet" id="portlet-related-projects">
+
+  <h2>
+    <span class="see-all">
+      
+      <a href="+projects">
+        Show related projects</a>
+    </span>
+    Related projects
+  </h2>
+
+
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <a href="/sflphone" class="sprite product">SFLphone</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+      
+  
+
+    </div>
+  </div>
+</div>
+            
+            
+          </div><!-- yui-b -->
+        </div><!-- yui-main -->
+
+        
+          <div id="side-portlets" class="yui-b side">
+            <div>
+
+  <div id="privacy" class="portlet">
+    <span>Public team</span>
+  </div>
+
+  
+  
+
+
+  <div id="global-actions" class="portlet vertical">
+  <ul>
+    <li>
+      <a class="menu-link-join sprite add" href="https://launchpad.net/~savoirfairelinux/+join">Join the team</a>
+    </li>
+    <li>
+      <a class="menu-link-add_my_teams sprite add" href="https://launchpad.net/~savoirfairelinux/+add-my-teams">Add one of my teams</a>
+    </li>
+  </ul>
+</div>
+
+  
+
+  
+
+
+
+</div>
+          </div><!-- yui-b side -->
+        
+      </div><!-- yui-t4 -->
+
+      
+  <div id="footer" class="footer">
+    <div class="lp-arcana">
+        <div class="lp-branding">
+          <a href="https://launchpad.net/"><img src="/@@/launchpad-footer-logo.svg" alt="Launchpad" width="65" height="18" /></a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://launchpad.net/+tour">Take the tour</a>
+          &nbsp;&bull;&nbsp;
+          <a href="https://help.launchpad.net/">Read the guide</a>
+          &nbsp;
+          <form id="globalsearch" method="get" accept-charset="UTF-8" action="https://launchpad.net/+search">
+            <input type="search" id="search-text" name="field.text" />
+            <input type="image" src="/@@/search" style="vertical-align:5%" alt="Search Launchpad" />
+          </form>
+        </div>
+        
+  
+
+    </div>
+
+    <div class="colophon">
+      &copy; 2004
+      <a href="http://canonical.com/">Canonical&nbsp;Ltd.</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://launchpad.net/legal">Terms of use</a>
+      &nbsp;&bull;&nbsp;
+      <a href="https://www.ubuntu.com/legal/dataprivacy">Data privacy</a>
+      &nbsp;&bull;&nbsp;
+      <a href="/feedback">Contact Launchpad Support</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="http://blog.launchpad.net/">Blog</a>
+      
+	&nbsp;&bull;&nbsp;
+	<a href="https://canonical.com/careers">Careers</a>
+      
+      &nbsp;&bull;&nbsp;
+      <a href="https://ubuntu.social/@launchpadstatus">System status</a>
+      <span id="lp-version">
+      &nbsp;&bull;&nbsp;
+        1519c6e
+        
+        
+        (<a href="https://dev.launchpad.net/">Get the code!</a>)
+      </span>
+    </div>
+  </div>
+
+    </div><!-- yui-d0-->
+
+    
+  
+  
+  <script id="json-cache-script">LP.cache = {"related_features": {}, "context": {"self_link": "https://launchpad.net/api/devel/~savoirfairelinux", "web_link": "https://launchpad.net/~savoirfairelinux", "resource_type_link": "https://launchpad.net/api/devel/#team", "all_specifications_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/all_specifications", "valid_specifications_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/valid_specifications", "recipes_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/recipes", "time_zone": "UTC", "private": false, "is_valid": true, "is_team": true, "account_status": "Unactivated", "visibility": "Public", "name": "savoirfairelinux", "is_probationary": false, "id": "tag:launchpad.net:2008:redacted", "karma": 0, "homepage_content": "http://www.savoirfairelinux.com", "description": "http://www.savoirfairelinux.com", "languages_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/languages", "hide_email_addresses": false, "date_created": "2009-04-13T15:47:44.051072+00:00", "sshkeys_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/sshkeys", "is_ubuntu_coc_signer": false, "gpg_keys_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/gpg_keys", "wiki_names_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/wiki_names", "irc_nicknames_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/irc_nicknames", "jabber_ids_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/jabber_ids", "social_accounts_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/social_accounts", "memberships_details_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/memberships_details", "open_membership_invitations_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/open_membership_invitations", "confirmed_email_addresses_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/confirmed_email_addresses", "team_owner_link": "https://launchpad.net/api/devel/~manumilou", "preferred_email_address_link": null, "mailing_list_auto_subscribe_policy": "Ask me when I join a team", "archive_link": "https://launchpad.net/api/devel/~savoirfairelinux/+archive/ubuntu/ppa", "ppas_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/ppas", "sub_teams_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/sub_teams", "super_teams_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/super_teams", "members_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/members", "admins_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/admins", "participants_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/participants", "deactivated_members_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/deactivated_members", "expired_members_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/expired_members", "invited_members_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/invited_members", "members_details_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/members_details", "proposed_members_collection_link": "https://launchpad.net/api/devel/~savoirfairelinux/proposed_members", "account_status_history": "tag:launchpad.net:2008:redacted", "team_description": null, "membership_policy": "Moderated Team", "subscription_policy": "Moderated Team", "renewal_policy": "invite them to apply for renewal", "default_membership_period": null, "default_renewal_period": null, "logo_link": "https://launchpad.net/api/devel/~savoirfairelinux/logo", "mugshot_link": "https://launchpad.net/api/devel/~savoirfairelinux/mugshot", "display_name": "Savoir Faire Linux", "http_etag": "\"10c8bd8f09e170dafccdbba765e88691e5fc9048-45135b0f8f698d0e4691754f0969c7f904b1bdd2\""}};</script>
+
+    
+  
+
+    
+  </body>
+
+
+  <!--
+    Facet name: overview
+    Page type: main_side
+    Has global search: True
+    Has application tabs: True
+    Has side portlets: True
+
+    At least 53 queries/external actions issued in 0.64 seconds
+
+    Features: {'profiling.enabled': None, 'hard_timeout': '5000', 'app.mainsite_only.canonical_url': None, 'js.yui_version': None, 'app.maintenance_message': None, 'registry.upcoming_work_view.enabled': None, 'baselayout.careers_link.disabled': None, 'visible_render_time': None}
+
+    r1519c6e
+
+    -->
+
+</html>
+
